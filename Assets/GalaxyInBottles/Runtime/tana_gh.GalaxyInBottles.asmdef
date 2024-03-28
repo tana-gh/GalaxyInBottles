@@ -1,0 +1,14 @@
+{
+    "name": "tana_gh.GalaxyInBottles",
+    "rootNamespace": "tana_gh.GalaxyInBottles",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
