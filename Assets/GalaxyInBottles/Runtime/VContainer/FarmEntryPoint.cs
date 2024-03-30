@@ -11,13 +11,13 @@ namespace tana_gh.GalaxyInBottles
     {
         //[Inject] private readonly IPublisher<UpdateEvent> _updatePub;
 
-        //partial void Init();
+        partial void Init();
 
         public async UniTask StartAsync(CancellationToken cancellationToken)
         {
-            //Init();
+            Init();
 
-            //await UniTask.Yield();
+            await UniTask.Yield();
         }
 
         public void Tick()
