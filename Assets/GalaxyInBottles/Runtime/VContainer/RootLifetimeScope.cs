@@ -7,6 +7,7 @@ namespace tana_gh.GalaxyInBottles
     {
         protected override void Configure(IContainerBuilder builder)
         {
+            base.Configure(builder);
         }
     }
 }
