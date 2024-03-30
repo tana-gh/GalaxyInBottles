@@ -10,9 +10,18 @@ namespace tana_gh.GalaxyInBottles
 {
     public partial class FarmLifetimeScope
     {
+        [SerializeField] private MainConfig _mainConfig;
         protected override void Configure(IContainerBuilder builder)
         {
             base.Configure(builder);
+        
+            if (_mainConfig != null) builder.RegisterInstance(_mainConfig);
+            builder.Register<GameHandler>(Lifetime.Scoped);
+            builder.Register<UpdateHandler>(Lifetime.Scoped);
+            var options = builder.RegisterMessagePipe();
+            builder.RegisterMessageBroker<ModelLoopMessage>(options);
+            builder.RegisterMessageBroker<UpdateMessage>(options);
+            builder.RegisterEntryPoint<FarmEntryPoint>();
         }
     }
 }

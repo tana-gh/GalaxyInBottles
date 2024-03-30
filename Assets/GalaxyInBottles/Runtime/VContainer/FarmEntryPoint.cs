@@ -9,7 +9,7 @@ namespace tana_gh.GalaxyInBottles
 {
     public partial class FarmEntryPoint : IAsyncStartable, ITickable
     {
-        //[Inject] private readonly IPublisher<UpdateEvent> _updatePub;
+        [Inject] private readonly IPublisher<UpdateMessage> _updatePub;
 
         partial void Init();
 
@@ -22,7 +22,7 @@ namespace tana_gh.GalaxyInBottles
 
         public void Tick()
         {
-            //_updatePub.Publish(new UpdateEvent(Time.deltaTime));
+            _updatePub.Publish(new UpdateMessage(Time.deltaTime));
         }
     }
 }

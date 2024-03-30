@@ -2,7 +2,8 @@
     "name": "tana_gh.GalaxyInBottles.Editor",
     "rootNamespace": "tana_gh.GalaxyInBottles.Editor",
     "references": [
-        "GUID:87a63afd14a0a684c8192fa0151a9594"
+        "GUID:87a63afd14a0a684c8192fa0151a9594",
+        "GUID:e0bbb370e7475d142929849245a13c39"
     ],
     "includePlatforms": [
         "Editor"

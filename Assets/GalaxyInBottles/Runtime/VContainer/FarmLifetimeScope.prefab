@@ -48,3 +48,4 @@ MonoBehaviour:
     TypeName: tana_gh.GalaxyInBottles.RootLifetimeScope
   autoRun: 1
   autoInjectGameObjects: []
+  _mainConfig: {fileID: 11400000, guid: db282d2378080f74d86959b9ecb72847, type: 2}
