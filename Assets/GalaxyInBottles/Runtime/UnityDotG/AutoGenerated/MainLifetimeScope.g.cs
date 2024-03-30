@@ -8,7 +8,7 @@ using VContainer.Unity;
 
 namespace tana_gh.GalaxyInBottles
 {
-    public partial class FarmLifetimeScope
+    public partial class MainLifetimeScope
     {
         [SerializeField] private MainConfig _mainConfig;
         protected override void Configure(IContainerBuilder builder)
@@ -21,7 +21,7 @@ namespace tana_gh.GalaxyInBottles
             var options = builder.RegisterMessagePipe();
             builder.RegisterMessageBroker<ModelLoopMessage>(options);
             builder.RegisterMessageBroker<UpdateMessage>(options);
-            builder.RegisterEntryPoint<FarmEntryPoint>();
+            builder.RegisterEntryPoint<MainEntryPoint>();
         }
     }
 }

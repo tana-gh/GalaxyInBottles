@@ -7,7 +7,7 @@ using VContainer.Unity;
 
 namespace tana_gh.GalaxyInBottles
 {
-    public partial class FarmEntryPoint : IAsyncStartable, ITickable
+    public partial class MainEntryPoint : IAsyncStartable, ITickable
     {
         [Inject] private readonly IPublisher<UpdateMessage> _updatePub;
 

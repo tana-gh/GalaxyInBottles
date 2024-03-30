@@ -133,7 +133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7397180722625456579, guid: bbc192c144e7e1545a94b4eb3cdfeb2e, type: 3}
       propertyPath: m_Name
-      value: FarmLifetimeScope
+      value: MainLifetimeScope
       objectReference: {fileID: 0}
     - target: {fileID: 7444375231204548799, guid: bbc192c144e7e1545a94b4eb3cdfeb2e, type: 3}
       propertyPath: m_LocalPosition.x

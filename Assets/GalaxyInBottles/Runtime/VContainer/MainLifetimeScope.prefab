@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7444375231204548799}
   - component: {fileID: 2244265588018808764}
   m_Layer: 0
-  m_Name: FarmLifetimeScope
+  m_Name: MainLifetimeScope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
