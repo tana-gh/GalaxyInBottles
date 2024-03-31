@@ -11,11 +11,13 @@ namespace tana_gh.GalaxyInBottles
     public partial class MainLifetimeScope
     {
         [SerializeField] private MainConfig _mainConfig;
+        [SerializeField] private ItemSetting[] _itemSettings;
         protected override void Configure(IContainerBuilder builder)
         {
             base.Configure(builder);
         
             if (_mainConfig != null) builder.RegisterInstance(_mainConfig);
+            if (_itemSettings != null) builder.RegisterInstance(_itemSettings);
             builder.Register<GameHandler>(Lifetime.Scoped);
             builder.Register<UpdateHandler>(Lifetime.Scoped);
             var options = builder.RegisterMessagePipe();

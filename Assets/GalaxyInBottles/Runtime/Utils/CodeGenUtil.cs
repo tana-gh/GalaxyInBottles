@@ -21,6 +21,11 @@ namespace tana_gh.GalaxyInBottles
             return $"_{char.ToLower(name[0])}{name[1..]}";
         }
 
+        public static string GetArrayVarName(this Type type)
+        {
+            return $"{type.GetVarName()}s";
+        }
+
         private static string GetName(Type type)
         {
             return Regex.Replace(type.Name, @"(.+\+)*(.+?)(`.+)?", "$2");

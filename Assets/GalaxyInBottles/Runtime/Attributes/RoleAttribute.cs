@@ -3,15 +3,15 @@ using System;
 namespace tana_gh.GalaxyInBottles
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, AllowMultiple = true, Inherited = false)]
-    public abstract class TypeAttribute : Attribute
+    public class RoleAttribute : Attribute
     {
+        public string Role { get; }
         public Type[] GenericParams { get; }
-        public string AdditionalData { get; }
 
-        public TypeAttribute(Type[] genericParams, string additionalData = null)
+        public RoleAttribute(string role, params Type[] genericParams)
         {
+            Role = role;
             GenericParams = genericParams;
-            AdditionalData = additionalData;
         }
     }
 }

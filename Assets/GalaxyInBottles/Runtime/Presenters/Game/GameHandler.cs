@@ -4,7 +4,7 @@ using VContainer;
 
 namespace tana_gh.GalaxyInBottles
 {
-    [Handler]
+    [Role("Handler")]
     public class GameHandler : IDisposable
     {
         [Inject] private readonly ISubscriber<ModelLoopMessage> _modelLoopSub;

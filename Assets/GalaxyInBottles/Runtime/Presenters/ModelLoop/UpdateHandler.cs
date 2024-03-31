@@ -4,7 +4,7 @@ using VContainer;
 
 namespace tana_gh.GalaxyInBottles
 {
-    [Handler]
+    [Role("Handler")]
     public class UpdateHandler : IDisposable
     {
         [Inject] private readonly MainConfig _mainConfig;
