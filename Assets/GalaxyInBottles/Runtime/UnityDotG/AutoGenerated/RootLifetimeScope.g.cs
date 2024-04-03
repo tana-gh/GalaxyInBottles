@@ -10,19 +10,13 @@ namespace tana_gh.GalaxyInBottles
 {
     public partial class RootLifetimeScope
     {
-        [SerializeField] private SandboxConfig _sandboxConfig;
         [SerializeField] private ItemSetting[] _itemSettings;
+    
         protected override void Configure(IContainerBuilder builder)
         {
             base.Configure(builder);
         
-            if (_sandboxConfig != null) builder.RegisterInstance(_sandboxConfig);
             if (_itemSettings != null) builder.RegisterInstance(_itemSettings);
-            builder.Register<GameHandler>(Lifetime.Scoped);
-            builder.Register<UpdateHandler>(Lifetime.Scoped);
-            var options = builder.RegisterMessagePipe();
-            builder.RegisterMessageBroker<ModelLoopMessage>(options);
-            builder.RegisterMessageBroker<UpdateMessage>(options);
             builder.RegisterEntryPoint<RootEntryPoint>();
         }
     }

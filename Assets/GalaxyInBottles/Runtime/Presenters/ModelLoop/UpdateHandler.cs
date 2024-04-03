@@ -4,7 +4,7 @@ using VContainer;
 
 namespace tana_gh.GalaxyInBottles
 {
-    [Role("Handler")]
+    [Role("Handler", SceneKind.Sandbox)]
     public class UpdateHandler : IDisposable
     {
         [Inject] private readonly SandboxConfig _sandboxConfig;

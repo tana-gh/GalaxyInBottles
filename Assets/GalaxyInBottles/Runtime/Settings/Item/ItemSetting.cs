@@ -3,7 +3,7 @@ using UnityEngine;
 namespace tana_gh.GalaxyInBottles
 {
     [CreateAssetMenu(menuName = "ScriptableObjects/ItemSetting")]
-    [Role("SettingArray")]
+    [Role("SettingArray", SceneKind.Root)]
     public class ItemSetting : ScriptableObject
     {
         [SerializeField] private string _kind;

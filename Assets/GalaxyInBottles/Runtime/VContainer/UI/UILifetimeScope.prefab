@@ -48,5 +48,3 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
-  _sandboxConfig: {fileID: 0}
-  _itemSettings: []

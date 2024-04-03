@@ -1,7 +1,7 @@
 
 namespace tana_gh.GalaxyInBottles
 {
-    [Role("Message")]
+    [Role("Message", SceneKind.Sandbox)]
     public readonly struct UpdateMessage
     {
         public readonly float deltaTime;

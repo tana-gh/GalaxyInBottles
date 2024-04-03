@@ -9,13 +9,9 @@ namespace tana_gh.GalaxyInBottles
     {
         [Inject] private readonly IObjectResolver _resolver;
         
-        [Inject] private readonly GameHandler _gameHandler;
-        [Inject] private readonly UpdateHandler _updateHandler;
 
         partial void Init()
         {
-            _gameHandler?.Init();
-            _updateHandler?.Init();
         }
     }
 }
