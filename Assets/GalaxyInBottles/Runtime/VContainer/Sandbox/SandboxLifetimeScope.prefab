@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7444375231204548799}
   - component: {fileID: 2244265588018808764}
   m_Layer: 0
-  m_Name: MainLifetimeScope
+  m_Name: SandboxLifetimeScope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,4 +48,4 @@ MonoBehaviour:
     TypeName: tana_gh.GalaxyInBottles.RootLifetimeScope
   autoRun: 1
   autoInjectGameObjects: []
-  _mainConfig: {fileID: 11400000, guid: db282d2378080f74d86959b9ecb72847, type: 2}
+  _sandboxConfig: {fileID: 11400000, guid: db282d2378080f74d86959b9ecb72847, type: 2}

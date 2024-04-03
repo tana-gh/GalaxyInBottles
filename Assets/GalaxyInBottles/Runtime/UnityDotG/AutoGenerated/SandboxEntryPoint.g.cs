@@ -6,7 +6,7 @@ using VContainer.Unity;
 
 namespace tana_gh.GalaxyInBottles
 {
-    public partial class MainEntryPoint
+    public partial class SandboxEntryPoint
     {
         [Inject] private readonly IObjectResolver _resolver;
         

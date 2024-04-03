@@ -7,7 +7,7 @@ namespace tana_gh.GalaxyInBottles
     [Role("Handler")]
     public class UpdateHandler : IDisposable
     {
-        [Inject] private readonly MainConfig _mainConfig;
+        [Inject] private readonly SandboxConfig _sandboxConfig;
         [Inject] private readonly ISubscriber<UpdateMessage> _updateSub;
         [Inject] private readonly IPublisher<ModelLoopMessage> _modelLoopPub;
 
@@ -22,7 +22,7 @@ namespace tana_gh.GalaxyInBottles
 
         private void OnUpdate(UpdateMessage msg)
         {
-            var ModelLoopFrequency = _mainConfig.ModelLoopFrequency;
+            var ModelLoopFrequency = _sandboxConfig.ModelLoopFrequency;
             var loopCount = (int)((_remainingTime + msg.deltaTime) / ModelLoopFrequency);
             _remainingTime = (_remainingTime + msg.deltaTime) % ModelLoopFrequency;
 

@@ -2,7 +2,7 @@ using VContainer.Unity;
 
 namespace tana_gh.GalaxyInBottles
 {
-    public partial class MainLifetimeScope : LifetimeScope
+    public partial class SandboxLifetimeScope : LifetimeScope
     {
     }
 }
