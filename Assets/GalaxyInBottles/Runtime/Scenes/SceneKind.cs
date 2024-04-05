@@ -5,6 +5,7 @@ namespace tana_gh.GalaxyInBottles
     {
         Root,
         Sandbox,
-        UI
+        UI,
+        StoreHouse
     }
 }
