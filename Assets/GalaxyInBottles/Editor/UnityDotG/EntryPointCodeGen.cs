@@ -19,6 +19,8 @@ namespace tana_gh.GalaxyInBottles.Editor
 
         public static void GenerateOne(CodeGenContext context, SceneKind sceneKind)
         {
+            var settingStores = RoleAttributeUtil.GetAllTypesWithRole("SettingStore", sceneKind);
+            var settingArrays = RoleAttributeUtil.GetAllTypesWithRole("SettingArray", sceneKind);
             var handlers = RoleAttributeUtil.GetAllTypesWithRole("Handler", sceneKind);
 
             context.AddCode($"{sceneKind}EntryPoint.g.cs",
@@ -31,6 +33,14 @@ namespace tana_gh.GalaxyInBottles
     {{
         [Inject] private readonly IObjectResolver _resolver;
         {
+            settingStores
+            .Select(settingStore => $@"[Inject] private readonly {settingStore.GetTypeName()} {settingStore.GetSettingStoreVarName()};")
+            .ToLines(8)
+        }{
+            settingArrays
+            .Select(settingArray => $@"[Inject] private readonly {settingArray.GetTypeName()}[] {settingArray.GetArrayVarName()};")
+            .ToLines(8)
+        }{
             handlers
             .Select(handler => $@"[Inject] private readonly {handler.GetTypeName()} {handler.GetVarName()};")
             .ToLines(8)
@@ -38,6 +48,16 @@ namespace tana_gh.GalaxyInBottles
 
         partial void Init()
         {{{
+            settingStores.Join
+            (
+                settingArrays,
+                settingStore => settingStore.GetGenericArguments()[0],
+                settingArray => settingArray,
+                (settingStore, settingArray) =>
+                    $@"if ({settingArray.GetArrayVarName()} != null) {settingStore.GetSettingStoreVarName()}?.Init({settingArray.GetArrayVarName()});"
+            )
+            .ToLines(12)
+        }{
             handlers
             .Select(handler => $@"{handler.GetVarName()}?.Init();")
             .ToLines(12)

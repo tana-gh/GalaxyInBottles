@@ -26,6 +26,11 @@ namespace tana_gh.GalaxyInBottles
             return $"{type.GetVarName()}s";
         }
 
+        public static string GetSettingStoreVarName(this Type type)
+        {
+            return $"{type.GetGenericArguments()[0].GetVarName()}Store";
+        }
+
         private static string GetName(Type type)
         {
             return Regex.Replace(type.Name, @"(.+\+)*(.+?)(`.+)?", "$2");

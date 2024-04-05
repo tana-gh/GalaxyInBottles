@@ -9,9 +9,12 @@ namespace tana_gh.GalaxyInBottles
     {
         [Inject] private readonly IObjectResolver _resolver;
         
+        [Inject] private readonly SettingStore<ItemSetting> _itemSettingStore;
+        [Inject] private readonly ItemSetting[] _itemSettings;
 
         partial void Init()
         {
+            if (_itemSettings != null) _itemSettingStore?.Init(_itemSettings);
         }
     }
 }

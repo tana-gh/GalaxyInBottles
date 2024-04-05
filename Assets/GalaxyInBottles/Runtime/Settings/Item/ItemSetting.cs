@@ -4,7 +4,7 @@ namespace tana_gh.GalaxyInBottles
 {
     [CreateAssetMenu(menuName = "ScriptableObjects/ItemSetting")]
     [Role("SettingArray", SceneKind.Root)]
-    public class ItemSetting : ScriptableObject
+    public class ItemSetting : ScriptableObject, ISetting
     {
         [SerializeField] private string _kind;
         [SerializeField] private string _name;

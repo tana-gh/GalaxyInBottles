@@ -21,6 +21,7 @@ namespace tana_gh.GalaxyInBottles.Editor
         {
             var settings = RoleAttributeUtil.GetAllTypesWithRole("Setting", sceneKind);
             var settingArrays = RoleAttributeUtil.GetAllTypesWithRole("SettingArray", sceneKind);
+            var settingStores = RoleAttributeUtil.GetAllTypesWithRole("SettingStore", sceneKind);
             var handlers = RoleAttributeUtil.GetAllTypesWithRole("Handler", sceneKind);
             var messages = RoleAttributeUtil.GetAllTypesWithRole("Message", sceneKind);
 
@@ -40,7 +41,7 @@ namespace tana_gh.GalaxyInBottles
         .ToLines(8)
     }{
         settingArrays
-        .Select(settings => $@"[SerializeField] private {settings.GetTypeName()}[] {settings.GetArrayVarName()};")
+        .Select(settingArray => $@"[SerializeField] private {settingArray.GetTypeName()}[] {settingArray.GetArrayVarName()};")
         .ToLines(8)
     }
     
@@ -53,7 +54,11 @@ namespace tana_gh.GalaxyInBottles
             .ToLines(12)
         }{
             settingArrays
-            .Select(settings => $@"if ({settings.GetArrayVarName()} != null) builder.RegisterInstance({settings.GetArrayVarName()});")
+            .Select(settingArray => $@"if ({settingArray.GetArrayVarName()} != null) builder.RegisterInstance({settingArray.GetArrayVarName()});")
+            .ToLines(12)
+        }{
+            settingStores
+            .Select(settingStore => $@"builder.Register<{settingStore.GetTypeName()}>(Lifetime.Scoped);")
             .ToLines(12)
         }{
             handlers

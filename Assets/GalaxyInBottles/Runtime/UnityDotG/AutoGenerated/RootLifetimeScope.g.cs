@@ -17,6 +17,7 @@ namespace tana_gh.GalaxyInBottles
             base.Configure(builder);
         
             if (_itemSettings != null) builder.RegisterInstance(_itemSettings);
+            builder.Register<SettingStore<ItemSetting>>(Lifetime.Scoped);
             builder.RegisterEntryPoint<RootEntryPoint>();
         }
     }
