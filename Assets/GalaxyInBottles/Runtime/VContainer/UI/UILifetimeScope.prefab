@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentReference:
-    TypeName: 
+    TypeName: tana_gh.GalaxyInBottles.RootLifetimeScope
   autoRun: 1
   autoInjectGameObjects: []
