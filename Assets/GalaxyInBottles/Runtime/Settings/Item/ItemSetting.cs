@@ -8,9 +8,9 @@ namespace tana_gh.GalaxyInBottles
     {
         [SerializeField] private string _kind;
         [SerializeField] private string _name;
-        [SerializeField] private string _stackCount;
+        [SerializeField] private int _stackCount;
         public string Kind => _kind;
         public string Name => _name;
-        public string StackCount => _stackCount;
+        public int StackCount => _stackCount;
     }
 }

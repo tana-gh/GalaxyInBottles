@@ -6,6 +6,6 @@ namespace tana_gh.GalaxyInBottles
     public class Inventory
     {
         public int id;
-        public Item[] items;
+        public ItemStack[] itemStacks;
     }
 }

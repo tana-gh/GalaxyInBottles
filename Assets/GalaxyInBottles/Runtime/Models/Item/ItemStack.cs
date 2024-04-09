@@ -3,10 +3,11 @@ using System;
 namespace tana_gh.GalaxyInBottles
 {
     [Serializable]
-    public class Item
+    public class ItemStack
     {
         public int id;
-        public string count;
+        public int count;
+        public int maxCount;
         public ItemSetting setting;
     }
 }
