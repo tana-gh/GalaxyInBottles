@@ -15,20 +15,20 @@ namespace tana_gh.GalaxyInBottles
                 (type.IsGenericType ? $"<{string.Join(", ", type.GenericTypeArguments.Select(t => t.GetTypeName()))}>" : "");
         }
 
-        public static string GetVarName(this Type type)
+        public static string GetVarName(this Type type, bool isProperty)
         {
             var name = GetName(type);
-            return $"_{char.ToLower(name[0])}{name[1..]}";
+            return isProperty ? name : $"_{char.ToLower(name[0])}{name[1..]}";
         }
 
-        public static string GetArrayVarName(this Type type)
+        public static string GetArrayVarName(this Type type, bool isProperty)
         {
-            return $"{type.GetVarName()}s";
+            return $"{type.GetVarName(isProperty)}s";
         }
 
-        public static string GetSettingStoreVarName(this Type type)
+        public static string GetSettingStoreVarName(this Type type, bool isProperty)
         {
-            return $"{type.GetGenericArguments()[0].GetVarName()}Store";
+            return $"{type.GetGenericArguments()[0].GetVarName(isProperty)}Store";
         }
 
         private static string GetName(Type type)

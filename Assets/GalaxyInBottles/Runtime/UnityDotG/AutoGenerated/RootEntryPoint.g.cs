@@ -7,14 +7,14 @@ namespace tana_gh.GalaxyInBottles
 {
     public partial class RootEntryPoint
     {
-        [Inject] private readonly IObjectResolver _resolver;
+        [Inject] private IObjectResolver Resolver { get; set; }
         
-        [Inject] private readonly SettingStore<ItemSetting> _itemSettingStore;
-        [Inject] private readonly ItemSetting[] _itemSettings;
+        [Inject] private SettingStore<ItemSetting> ItemSettingStore { get; set; }
+        [Inject] private ItemSetting[] ItemSettings { get; set; }
 
         partial void Init()
         {
-            if (_itemSettings != null) _itemSettingStore?.Init(_itemSettings);
+            if (ItemSettings != null) ItemSettingStore?.Init(ItemSettings);
         }
     }
 }

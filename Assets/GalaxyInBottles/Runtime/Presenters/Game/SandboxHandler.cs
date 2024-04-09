@@ -7,14 +7,14 @@ namespace tana_gh.GalaxyInBottles
     [Role("Handler", SceneKind.Sandbox)]
     public class SandboxHandler : IDisposable
     {
-        [Inject] private readonly ISubscriber<ModelLoopMessage> _modelLoopSub;
+        [Inject] private ISubscriber<ModelLoopMessage> ModelLoopSub { get; set; }
 
-        private readonly DisposableBagBuilder _disposables = DisposableBag.CreateBuilder();
-        private bool _disposed = false;
+        private DisposableBagBuilder Disposables { get; } = DisposableBag.CreateBuilder();
+        private bool Disposed { get; set; } = false;
 
         public void Init()
         {
-            _modelLoopSub.Subscribe(OnModelLoop).AddTo(_disposables);
+            ModelLoopSub.Subscribe(OnModelLoop).AddTo(Disposables);
         }
 
         private void OnModelLoop(ModelLoopMessage msg)
@@ -24,10 +24,10 @@ namespace tana_gh.GalaxyInBottles
 
         public void Dispose()
         {
-            if (!_disposed)
+            if (!Disposed)
             {
-                _disposables.Build().Dispose();
-                _disposed = true;
+                Disposables.Build().Dispose();
+                Disposed = true;
             }
         }
     }

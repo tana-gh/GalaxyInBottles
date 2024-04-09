@@ -4,11 +4,11 @@ namespace tana_gh.GalaxyInBottles
     [Role("Message", SceneKind.Sandbox)]
     public readonly struct ModelLoopMessage
     {
-        public readonly float deltaTime;
+        public float DeltaTime { get; }
 
         public ModelLoopMessage(float deltaTime)
         {
-            this.deltaTime = deltaTime;
+            DeltaTime = deltaTime;
         }
     }
 }

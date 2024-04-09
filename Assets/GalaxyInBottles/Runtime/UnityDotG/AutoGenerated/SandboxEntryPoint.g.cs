@@ -7,15 +7,15 @@ namespace tana_gh.GalaxyInBottles
 {
     public partial class SandboxEntryPoint
     {
-        [Inject] private readonly IObjectResolver _resolver;
+        [Inject] private IObjectResolver Resolver { get; set; }
         
-        [Inject] private readonly SandboxHandler _sandboxHandler;
-        [Inject] private readonly UpdateHandler _updateHandler;
+        [Inject] private SandboxHandler SandboxHandler { get; set; }
+        [Inject] private UpdateHandler UpdateHandler { get; set; }
 
         partial void Init()
         {
-            _sandboxHandler?.Init();
-            _updateHandler?.Init();
+            SandboxHandler?.Init();
+            UpdateHandler?.Init();
         }
     }
 }

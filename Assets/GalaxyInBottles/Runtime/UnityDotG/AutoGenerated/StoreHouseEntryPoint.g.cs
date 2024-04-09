@@ -7,7 +7,7 @@ namespace tana_gh.GalaxyInBottles
 {
     public partial class StoreHouseEntryPoint
     {
-        [Inject] private readonly IObjectResolver _resolver;
+        [Inject] private IObjectResolver Resolver { get; set; }
         
 
         partial void Init()

@@ -7,37 +7,37 @@ namespace tana_gh.GalaxyInBottles
     [Role("Handler", SceneKind.Sandbox)]
     public class UpdateHandler : IDisposable
     {
-        [Inject] private readonly SandboxConfig _sandboxConfig;
-        [Inject] private readonly ISubscriber<UpdateMessage> _updateSub;
-        [Inject] private readonly IPublisher<ModelLoopMessage> _modelLoopPub;
+        [Inject] private SandboxConfig SandboxConfig { get; set; }
+        [Inject] private ISubscriber<UpdateMessage> UpdateSub { get; set; }
+        [Inject] private IPublisher<ModelLoopMessage> ModelLoopPub { get; set; }
 
-        private float _remainingTime = 0.0F;
-        private readonly DisposableBagBuilder _disposables = DisposableBag.CreateBuilder();
-        private bool _disposed = false;
+        private float RemainingTime { get; set; } = 0.0F;
+        private DisposableBagBuilder Disposables { get; } = DisposableBag.CreateBuilder();
+        private bool Disposed { get; set; } = false;
 
         public void Init()
         {
-            _updateSub.Subscribe(OnUpdate).AddTo(_disposables);
+            UpdateSub.Subscribe(OnUpdate).AddTo(Disposables);
         }
 
         private void OnUpdate(UpdateMessage msg)
         {
-            var ModelLoopFrequency = _sandboxConfig.ModelLoopFrequency;
-            var loopCount = (int)((_remainingTime + msg.deltaTime) / ModelLoopFrequency);
-            _remainingTime = (_remainingTime + msg.deltaTime) % ModelLoopFrequency;
+            var modelLoopFrequency = SandboxConfig.ModelLoopFrequency;
+            var loopCount = (int)((RemainingTime + msg.DeltaTime) / modelLoopFrequency);
+            RemainingTime = (RemainingTime + msg.DeltaTime) % modelLoopFrequency;
 
             for (var i = 0; i < loopCount; i++)
             {
-                _modelLoopPub.Publish(new ModelLoopMessage(ModelLoopFrequency));
+                ModelLoopPub.Publish(new ModelLoopMessage(modelLoopFrequency));
             }
         }
 
         public void Dispose()
         {
-            if (!_disposed)
+            if (!Disposed)
             {
-                _disposables.Build().Dispose();
-                _disposed = true;
+                Disposables.Build().Dispose();
+                Disposed = true;
             }
         }
     }
