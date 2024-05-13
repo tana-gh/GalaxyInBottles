@@ -11,7 +11,6 @@ namespace tana_gh.GalaxyInBottles
         
 
         partial void Init()
-        {
-        }
+        {}
     }
 }

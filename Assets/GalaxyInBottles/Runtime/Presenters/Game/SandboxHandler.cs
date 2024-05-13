@@ -1,34 +1,17 @@
-using System;
-using MessagePipe;
-using VContainer;
+using Cysharp.Threading.Tasks;
+using VitalRouter;
 
 namespace tana_gh.GalaxyInBottles
 {
+    [Routes]
     [Role("Handler", SceneKind.Sandbox)]
-    public class SandboxHandler : IDisposable
+    public partial class SandboxHandler
     {
-        [Inject] private ISubscriber<ModelLoopMessage> ModelLoopSub { get; set; }
-
-        private DisposableBagBuilder Disposables { get; } = DisposableBag.CreateBuilder();
-        private bool Disposed { get; set; } = false;
-
-        public void Init()
-        {
-            ModelLoopSub.Subscribe(OnModelLoop).AddTo(Disposables);
-        }
-
-        private void OnModelLoop(ModelLoopMessage msg)
+        [Route]
+        private async UniTask OnModelLoop(ModelLoopCommand msg)
         {
             UnityEngine.Debug.Log("ModelLoop");
-        }
-
-        public void Dispose()
-        {
-            if (!Disposed)
-            {
-                Disposables.Build().Dispose();
-                Disposed = true;
-            }
+            await UniTask.Yield();
         }
     }
 }

@@ -23,14 +23,13 @@ namespace tana_gh.GalaxyInBottles.Editor
             var settingArrays = RoleAttributeUtil.GetAllTypesWithRole("SettingArray", sceneKind);
             var settingStores = RoleAttributeUtil.GetAllTypesWithRole("SettingStore", sceneKind);
             var handlers = RoleAttributeUtil.GetAllTypesWithRole("Handler", sceneKind);
-            var messages = RoleAttributeUtil.GetAllTypesWithRole("Message", sceneKind);
 
             context.AddCode($"{sceneKind}LifetimeScope.g.cs",
 $@"
 using UnityEngine;
-using MessagePipe;
 using VContainer;
 using VContainer.Unity;
+using VitalRouter.VContainer;
 
 namespace tana_gh.GalaxyInBottles
 {{
@@ -65,10 +64,12 @@ namespace tana_gh.GalaxyInBottles
             .Select(handler => $@"builder.Register<{handler.GetTypeName()}>(Lifetime.Scoped);")
             .ToLines(12)
         }{
-            (messages.Any() ? new string[] { $@"var options = builder.RegisterMessagePipe();" } : Enumerable.Empty<string>())
-            .Concat(
-                messages
-                .Select(message => $@"builder.RegisterMessageBroker<{message.GetTypeName()}>(options);")
+            (
+                handlers.Any() ?
+                new string[] { $@"builder.RegisterVitalRouter(routing =>", $@"{{" }
+                .Concat(handlers.Select(handler => $@"    routing.Map<{handler.GetTypeName()}>();"))
+                .Concat(new string[] { $@"}});" }) :
+                Enumerable.Empty<string>()
             )
             .ToLines(12)
         }

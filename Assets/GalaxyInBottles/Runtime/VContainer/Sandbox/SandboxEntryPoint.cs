@@ -1,15 +1,15 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using MessagePipe;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
+using VitalRouter;
 
 namespace tana_gh.GalaxyInBottles
 {
     public partial class SandboxEntryPoint : IAsyncStartable, ITickable
     {
-        [Inject] private IPublisher<UpdateMessage> UpdatePub { get; set; }
+        [Inject] private ICommandPublisher Publisher { get; set; }
 
         partial void Init();
 
@@ -22,7 +22,7 @@ namespace tana_gh.GalaxyInBottles
 
         public void Tick()
         {
-            UpdatePub.Publish(new UpdateMessage(Time.deltaTime));
+            Publisher.PublishAsync(new UpdateCommand(Time.deltaTime)).Forget();
         }
     }
 }

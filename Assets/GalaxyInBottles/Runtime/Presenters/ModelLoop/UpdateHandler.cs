@@ -1,26 +1,20 @@
-using System;
-using MessagePipe;
+using Cysharp.Threading.Tasks;
 using VContainer;
+using VitalRouter;
 
 namespace tana_gh.GalaxyInBottles
 {
+    [Routes]
     [Role("Handler", SceneKind.Sandbox)]
-    public class UpdateHandler : IDisposable
+    public partial class UpdateHandler
     {
         [Inject] private SandboxConfig SandboxConfig { get; set; }
-        [Inject] private ISubscriber<UpdateMessage> UpdateSub { get; set; }
-        [Inject] private IPublisher<ModelLoopMessage> ModelLoopPub { get; set; }
+        [Inject] private ICommandPublisher Publisher { get; set; }
 
         private float RemainingTime { get; set; } = 0.0F;
-        private DisposableBagBuilder Disposables { get; } = DisposableBag.CreateBuilder();
-        private bool Disposed { get; set; } = false;
 
-        public void Init()
-        {
-            UpdateSub.Subscribe(OnUpdate).AddTo(Disposables);
-        }
-
-        private void OnUpdate(UpdateMessage msg)
+        [Route]
+        private async UniTask OnUpdate(UpdateCommand msg)
         {
             var modelLoopFrequency = SandboxConfig.ModelLoopFrequency;
             var loopCount = (int)((RemainingTime + msg.DeltaTime) / modelLoopFrequency);
@@ -28,16 +22,7 @@ namespace tana_gh.GalaxyInBottles
 
             for (var i = 0; i < loopCount; i++)
             {
-                ModelLoopPub.Publish(new ModelLoopMessage(modelLoopFrequency));
-            }
-        }
-
-        public void Dispose()
-        {
-            if (!Disposed)
-            {
-                Disposables.Build().Dispose();
-                Disposed = true;
+                await Publisher.PublishAsync(new ModelLoopCommand(modelLoopFrequency));
             }
         }
     }

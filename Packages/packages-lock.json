@@ -1,32 +1,18 @@
 {
   "dependencies": {
-    "com.cysharp.messagepipe": {
-      "version": "https://github.com/Cysharp/MessagePipe.git?path=src/MessagePipe.Unity/Assets/Plugins/MessagePipe",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "5d3b2b8e06ba97a7e11525942b34e3247d1f0064"
-    },
-    "com.cysharp.messagepipe.vcontainer": {
-      "version": "https://github.com/Cysharp/MessagePipe.git?path=src/MessagePipe.Unity/Assets/Plugins/MessagePipe.VContainer",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "5d3b2b8e06ba97a7e11525942b34e3247d1f0064"
-    },
     "com.cysharp.unitask": {
       "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "d057074f177b078e29f10dd511b54df48a8806ea"
+      "hash": "fbe0bf85155f42f8832205f7b3ac3df571ada33e"
     },
     "com.tana_gh.unity_dot_g": {
       "version": "https://github.com/tana-gh/UnityDotG.git?path=/Assets/UnityDotG",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "bcd3876a7f9d9f6bf2c712b9f357c36c664d3223"
+      "hash": "bb29c7fe3337d2ce4febfe61e58829e66074f121"
     },
     "com.unity.2d.animation": {
       "version": "9.1.0",
@@ -299,7 +285,14 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "634d03aa8349e5698be39d487e2ef0f9d5c881d9"
+      "hash": "58610810240efebe27b982a3adfb8405c57320a2"
+    },
+    "jp.hadashikick.vitalrouter": {
+      "version": "https://github.com/hadashiA/VitalRouter.git?path=/src/VitalRouter.Unity/Assets/VitalRouter",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "e98aae6c8d44205e36950381f06ae1bcd34d3425"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

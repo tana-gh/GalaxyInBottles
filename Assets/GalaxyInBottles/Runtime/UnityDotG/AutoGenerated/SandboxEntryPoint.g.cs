@@ -9,13 +9,8 @@ namespace tana_gh.GalaxyInBottles
     {
         [Inject] private IObjectResolver Resolver { get; set; }
         
-        [Inject] private SandboxHandler SandboxHandler { get; set; }
-        [Inject] private UpdateHandler UpdateHandler { get; set; }
 
         partial void Init()
-        {
-            SandboxHandler?.Init();
-            UpdateHandler?.Init();
-        }
+        {}
     }
 }

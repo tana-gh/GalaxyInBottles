@@ -14,7 +14,6 @@ namespace tana_gh.GalaxyInBottles
 
         partial void Init()
         {
-            if (ItemSettings != null) ItemSettingStore?.Init(ItemSettings);
-        }
+            if (ItemSettings != null) ItemSettingStore?.Init(ItemSettings);}
     }
 }
